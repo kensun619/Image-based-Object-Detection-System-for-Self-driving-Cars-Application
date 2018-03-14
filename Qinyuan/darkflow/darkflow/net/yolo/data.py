@@ -2,6 +2,7 @@ from ...utils.pascal_voc_clean_xml import pascal_voc_clean_xml
 from ...utils.pascal_voc_clean_xml import parse_annotation
 from numpy.random import permutation as perm
 from .predict import preprocess
+from timeit import default_timer as timer
 # from .misc import show
 from copy import deepcopy
 import pickle
@@ -64,7 +65,7 @@ def _batch(self, chunk):
     coord = np.zeros([S*S,B,4])
     proid = np.zeros([S*S,C])
     prear = np.zeros([S*S,4])
-    print(labels)
+    
     for obj in allobj:
         probs[obj[5], :] = [0.] * C
         probs[obj[5], labels.index(obj[0])] = 1.
@@ -106,6 +107,7 @@ def shuffle(self):
     batch_per_epoch = int(size / batch)
 
     for i in range(self.FLAGS.epoch):
+        start = timer()
         shuffle_idx = perm(np.arange(size))
         for b in range(batch_per_epoch):
             # yield these
@@ -135,6 +137,6 @@ def shuffle(self):
             
             x_batch = np.concatenate(x_batch, 0)
             yield x_batch, feed_batch
-        
-        print('Finish {} epoch(es)'.format(i + 1))
+        end = timer()
+        print('Finish {} epoch(es) in {}'.format(i + 1, end - start))
 
