@@ -104,6 +104,7 @@ def parse_annotation(ANN, IMGDIR):
                 current = [str(label), xmin, ymin, xmax, ymax]
                 all += [current]
         img_path = os.path.join(img_dir, image_name )   
+        print(img_path)
         img = cv2.imread(img_path)  
         h, w = img.shape[0], img.shape[1]    
         # hard coding here for speed up
