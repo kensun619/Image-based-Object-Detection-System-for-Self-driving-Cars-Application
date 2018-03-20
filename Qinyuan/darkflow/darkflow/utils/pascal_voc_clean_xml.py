@@ -81,7 +81,7 @@ def pascal_voc_clean_xml(ANN, pick, exclusive = False):
 def parse_annotation(ANN, IMGDIR):
     print('Parsing using user defined function')
     dumps = list()
-    ann_file = ANN + '/label.idl'
+    ann_file = os.path.join(ANN ,'comb-label.idl')
     img_dir = IMGDIR
     with open(ann_file) as f:
         lines = f.readlines()
@@ -103,7 +103,7 @@ def parse_annotation(ANN, IMGDIR):
                 label = box[4]
                 current = [str(label), xmin, ymin, xmax, ymax]
                 all += [current]
-        img_path = img_dir + '/' + image_name     
+        img_path = os.path.join(img_dir, image_name )   
         img = cv2.imread(img_path)  
         h, w = img.shape[0], img.shape[1]    
         # hard coding here for speed up
