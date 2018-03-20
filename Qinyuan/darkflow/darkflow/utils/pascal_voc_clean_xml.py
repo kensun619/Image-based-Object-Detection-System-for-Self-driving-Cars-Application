@@ -7,7 +7,7 @@ import sys
 import xml.etree.ElementTree as ET
 import glob
 import json
-
+import cv2
 def _pp(l): # pretty printing 
     for i in l: print('{}: {}'.format(i,l[i]))
 
