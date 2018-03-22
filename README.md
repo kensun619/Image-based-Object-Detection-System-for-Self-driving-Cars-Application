@@ -1,9 +1,5 @@
-## BitTigerCapstone
 
-# Week 1: Transfer Learning
+This Project is modified base on following [Yolo Tensorflow implementation](https://github.com/thtrieu/darkflow) from Yolo's original authors.
 
-Yolo Tensorflow implementation
-https://github.com/thtrieu/darkflow
+This is a Capstone project for BitTiger AI track. The training/testing set are provide by the courtsey of BitTiger.
 
-Start Training Yolo with your own data
-http://guanghan.info/blog/en/my-works/train-yolo/
